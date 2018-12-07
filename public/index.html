@@ -2,101 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link rel="stylesheet" type="text/css" href="index.css">
     <title>Hangman App</title>
   </head>
   <body>
-    <section>
-      <form onsubmit="submitGuess(event)">
-        <input type="text">
-        <input type="submit" value="Submit">
-      </form>
-    </section>
-    <section>
-      <ul id="letters">
-      </ul>
-    </section>
-    <section>
-      <span id="message"></span>
-    </section>
-    
-    <script>
-      const guesses = [];
-      const word = 'map';
-      let strikes = 0;
-      
-      const MAX_STRIKES = 6;
-      const CORRECT_GUESS = "You Guessed Correctly!";
-      const WRONG_GUESS = "You Guess Wrong!";
-      const GAME_WON = "CONGRATULATIONS! YOU WON!";
-      const GAME_LOST = "SORRY, YOU RAN OUT OF GUESSES =(";
-
-      const renderLetters = () => {
-        const ul = document.getElementById('letters');
-        ul.innerHTML = '';
-        
-        word.split('').forEach( letter => {
-
-          if (guesses.includes(letter)) {
-            const li = document.createElement('li');
-            li.innerHTML = letter;
-            ul.appendChild(li);
-          } else {
-            const li = document.createElement('li');
-            li.innerHTML = '_';
-            ul.appendChild(li);
-          }
-        })
-      }
-
-      const renderMessage = (msg) => {
-        const span = document.getElementById('message');
-        span.innerHTML = msg;
-      }
-
-      function submitGuess(e) {
-        e.preventDefault();
-        const letter = e.target.children[0].value;
-
-        guesses.push(letter);
-
-        renderLetters();
-
-        checkGuess(letter);
-      }
-
-      function checkGuess(letter) {
-        if (word.includes(letter)) {
-          renderMessage(CORRECT_GUESS);
-        } else {
-          renderMessage(WRONG_GUESS);
-          strikes++;
-        }
-
-        checkGameOver();
-      }
-
-      function checkGameOver() {
-        if (gameIsWon()) {
-          renderMessage(GAME_WON);
-        } 
-
-        if (gameIsLost()) {
-          renderMessage(GAME_LOST);
-        }
-      }
-
-      function gameIsWon() {
-        return word.split('').reduce( (accum, letter) => {
-          return accum && guesses.includes(letter);
-        }, true);
-      }
-
-      function gameIsLost() {
-        return strikes === MAX_STRIKES;
-      }
-
-      document.addEventListener("DOMContentLoaded", renderLetters)
-
-    </script>
+    <div id="root">
+    </div>
   </body>
 </html>

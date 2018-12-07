@@ -1,0 +1,43 @@
+body {
+  background: #cfc;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+section {
+  margin: 10px;
+}
+
+input {
+  margin-right: 5px;
+}
+
+.wrapper {
+  background: #f4f4f4;
+  width: 40%;
+  margin: 20px auto;
+  padding: 25px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#letters {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 15px;
+}
+
+#letters > li {
+  margin: 0 5px;
+  font-size: 2.5rem;
+}
+
