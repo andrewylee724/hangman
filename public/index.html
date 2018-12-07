@@ -2,39 +2,101 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#000000">
-    <!--
-      manifest.json provides metadata used when your web app is added to the
-      homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <title>Hangman App</title>
   </head>
   <body>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <section>
+      <form onsubmit="submitGuess(event)">
+        <input type="text">
+        <input type="submit" value="Submit">
+      </form>
+    </section>
+    <section>
+      <ul id="letters">
+      </ul>
+    </section>
+    <section>
+      <span id="message"></span>
+    </section>
+    
+    <script>
+      const guesses = [];
+      const word = 'map';
+      let strikes = 0;
+      
+      const MAX_STRIKES = 6;
+      const CORRECT_GUESS = "You Guessed Correctly!";
+      const WRONG_GUESS = "You Guess Wrong!";
+      const GAME_WON = "CONGRATULATIONS! YOU WON!";
+      const GAME_LOST = "SORRY, YOU RAN OUT OF GUESSES =(";
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+      const renderLetters = () => {
+        const ul = document.getElementById('letters');
+        ul.innerHTML = '';
+        
+        word.split('').forEach( letter => {
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+          if (guesses.includes(letter)) {
+            const li = document.createElement('li');
+            li.innerHTML = letter;
+            ul.appendChild(li);
+          } else {
+            const li = document.createElement('li');
+            li.innerHTML = '_';
+            ul.appendChild(li);
+          }
+        })
+      }
+
+      const renderMessage = (msg) => {
+        const span = document.getElementById('message');
+        span.innerHTML = msg;
+      }
+
+      function submitGuess(e) {
+        e.preventDefault();
+        const letter = e.target.children[0].value;
+
+        guesses.push(letter);
+
+        renderLetters();
+
+        checkGuess(letter);
+      }
+
+      function checkGuess(letter) {
+        if (word.includes(letter)) {
+          renderMessage(CORRECT_GUESS);
+        } else {
+          renderMessage(WRONG_GUESS);
+          strikes++;
+        }
+
+        checkGameOver();
+      }
+
+      function checkGameOver() {
+        if (gameIsWon()) {
+          renderMessage(GAME_WON);
+        } 
+
+        if (gameIsLost()) {
+          renderMessage(GAME_LOST);
+        }
+      }
+
+      function gameIsWon() {
+        return word.split('').reduce( (accum, letter) => {
+          return accum && guesses.includes(letter);
+        }, true);
+      }
+
+      function gameIsLost() {
+        return strikes === MAX_STRIKES;
+      }
+
+      document.addEventListener("DOMContentLoaded", renderLetters)
+
+    </script>
   </body>
 </html>
