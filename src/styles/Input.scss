@@ -1,0 +1,28 @@
+@import './Index.scss';
+
+.keyboard {
+  margin-top: 10px;
+  text-align: center;
+
+  .key {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 1px;
+    padding: 0px;
+    background: #666;
+    color: #eee;
+    font-family: 'arial', 'helvetica';
+    border: 1px solid #333;
+    border-radius: 5px;  
+    transition: all .2s ease-in-out;
+  }
+}
+
+
+
+.key:hover {
+  box-shadow: 1px 2px 2px #221b07;
+  transform: scale(1.1);
+}
+

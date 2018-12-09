@@ -1,7 +1,7 @@
 $classroomGreen: #aaffaa;
 
 @mixin paper {
-  background: #eee;
+  background: #fff;
   box-shadow: 0 4px 8px 0 #888, 0 6px 20px 0 #aaa;
   border-radius: 8px;
 }
@@ -20,7 +20,8 @@ header {
 }
 
 section {
-  margin: 10px;
+  width: 100%;
+  text-align: center;
 }
 
 input {
