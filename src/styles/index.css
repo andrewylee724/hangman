@@ -2,10 +2,11 @@ body {
   background: #cfc;
   margin: 0;
   padding: 0;
+  font-size: 20px;
 }
 
 header {
-  font-size: 1.5rem;
+  font-size: 2.25rem;
   font-weight: bold;
   margin: 15px 0;
 }
@@ -27,17 +28,11 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 0 4px 8px 0 #888, 0 6px 20px 0 #bbb;
 }
 
-#letters {
-  display: flex;
+ul {
   list-style: none;
-  padding: 0;
-  margin: 15px;
-}
-
-#letters > li {
-  margin: 0 5px;
-  font-size: 2.5rem;
+  padding-left: 0;
 }
 

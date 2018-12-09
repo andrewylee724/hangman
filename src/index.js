@@ -4,7 +4,7 @@ import Hangman from './components/Hangman';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from './reducers';
-import './index.css';
+import './styles/index.css';
 
 const store = createStore(rootReducer);
 
