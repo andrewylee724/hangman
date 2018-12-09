@@ -12,12 +12,17 @@ class Input extends React.Component {
   }
 
   handleKeyDown = (event) => {
-    const { updateGuesses } = this.props;
-    event.preventDefault();
+    const { guesses, updateGuesses } = this.props;
     const key = event.key.toUpperCase();
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
-    updateGuesses(key);
-    
+    if(!letters.includes(key)) {
+      return;
+    }
+
+    if(!guesses.includes(key)) {
+      updateGuesses(key);
+    }
   }
 
   // submitGuess = (event) => {
@@ -46,14 +51,15 @@ class Input extends React.Component {
   }
 
   renderKeyboard = () => {
+    const { guesses } = this.props;
 
     const convertToKeys = (str) => {
       return str.split('').map(key => {
         return (
           <span 
             key={key}
-            className="key"
-            onClick={() => this.handleKeyClick(key)}>
+            className={ guesses.includes(key) ? 'key cancelled' : 'key'}
+            onClick={() => guesses.includes(key) ? '' : this.handleKeyClick(key)}>
             {key}
           </span>
         );
