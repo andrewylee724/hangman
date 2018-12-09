@@ -1,6 +1,5 @@
 import React from 'react';
-import LetterBlock from './LetterBlock';
-import '../styles/Display.scss';
+import { addGuesses } from '../actions';
 
 class Display extends React.Component {
 
@@ -59,8 +58,8 @@ class Display extends React.Component {
     if(word) {
       return word.split('').map( letter => {
         return guesses.includes(letter) 
-          ? <LetterBlock key={Math.random()} letter={letter}/>
-          : <LetterBlock key={Math.random()} letter='_'/>
+          ? <li key={Math.random()}>{letter}</li> 
+          : <li key={Math.random()}>_</li>;
       })
     } else {
       return 'Loading Word...';
@@ -99,7 +98,7 @@ class Display extends React.Component {
           Your Past Guesses:
           {this.renderGuesses()}
         </ul>
-        <ul id='words_letters'>
+        <ul id='letters'>
           {this.renderLetters()}
         </ul>
       </section>
