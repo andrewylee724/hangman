@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/LetterBlock.css';
+import '../styles/LetterBlock.scss';
 
 const LetterBlock = ({letter}) => {
   return(

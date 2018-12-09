@@ -1,5 +1,13 @@
+$classroomGreen: #aaffaa;
+
+@mixin paper {
+  background: #eee;
+  box-shadow: 0 4px 8px 0 #888, 0 6px 20px 0 #aaa;
+  border-radius: 8px;
+}
+
 body {
-  background: #cfc;
+  background: $classroomGreen;
   margin: 0;
   padding: 0;
   font-size: 20px;
@@ -20,15 +28,13 @@ input {
 }
 
 .wrapper {
-  background: #f4f4f4;
+  @include paper;
   width: 40%;
   margin: 20px auto;
   padding: 25px;
-  border-radius: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 4px 8px 0 #888, 0 6px 20px 0 #bbb;
 }
 
 ul {

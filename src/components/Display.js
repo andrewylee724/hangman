@@ -1,6 +1,6 @@
 import React from 'react';
 import LetterBlock from './LetterBlock';
-import '../styles/Display.css';
+import '../styles/Display.scss';
 
 class Display extends React.Component {
 
