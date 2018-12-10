@@ -45,6 +45,7 @@ class Input extends React.Component {
 
   handleKeyClick = (key) => {
     const { updateGuesses } = this.props;
+    key = key.toUpperCase();
     console.log('key is clicked!', key);
 
     updateGuesses(key);
