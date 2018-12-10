@@ -1,5 +1,6 @@
 import React from 'react';
 import LetterBlock from './LetterBlock';
+import Drawing from './Drawing';
 import '../styles/Display.scss';
 
 class Display extends React.Component {
@@ -95,6 +96,9 @@ class Display extends React.Component {
         <div>
           Guesses Left:&nbsp;{MAX_STRIKES - strikes}
         </div>
+        <Drawing
+          strikes={strikes}
+          />
         <ul>
           Your Past Guesses:
           {this.renderGuesses()}
