@@ -115,10 +115,6 @@ class Display extends React.Component {
         <Drawing
           strikes={strikes}
           />
-        <ul>
-          Your Past Guesses:
-          {this.renderGuesses()}
-        </ul>
         <ul id='words_letters'>
           {isWordsLoading
             ? 'Loading Word...'
