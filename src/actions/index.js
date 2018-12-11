@@ -24,6 +24,11 @@ export const updateWords = (words) => ({
   words,
 });
 
+export const setGameStatus = (status) => ({
+  type: 'SET_GAME_STATUS',
+  payload: status,
+});
+
 export const fetchFromAPI = () => {
   return (dispatch) => {
     dispatch(setWordsLoading(true));
