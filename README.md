@@ -1,8 +1,24 @@
+Note: To run, please clone or fork this repository.  In the command line in the root directory, run "npm install" and "npm start".
+
 Hangman Application
 created by Andrew Lee
 
 Intro:
 A simple Hangman application was first created in Vanilla JavaScript.  Then refactored using React.  Then refactored again using Redux for state management.
+
+Summary:
+I developed this app to display my candidacy for a software engineer position at LinkedIn.  The game showcases many of the engineering and UI concepts that I have learned, including:
+
+React - to build the UI in a declarative approach, utilizing component-based architecture, and the virtual DOM
+Redux - to manage state globally
+Redux-Thunk - to handle asynchronous data fetching within the Redux architecture
+SASS - as a CSS processor and to use variables and mixins.  No component libraries (i.e. Semantic UI, Material UI) were used as I wanted to showcase my ability to harness CSS styling
+CORS Proxy - I utilized a third-party CORS proxy during my api fetches to overcome the "No-CORS" roadblock on the REACH dictionary server.  I assumed that I was not allowed to ask REACH's backend server to allow Cross Origin Requests.
+
+Workflow:
+To show my knowledge of the Git workflow, I had master, develop, and feature branches.  Each branch represented a hypothetical ticket on JIRA.  I would merge individual feature branches onto develop, and then merge develop onto master.
+
+The following are the features (i.e. user stories) that I implemented:
 
 Feature-1: User should see displayed letters in visually appealing Letter Blocks.
 
