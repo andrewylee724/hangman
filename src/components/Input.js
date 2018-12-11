@@ -109,9 +109,9 @@ class Input extends React.Component {
 
     return (
       <section>
-        <span className="guess_message">
+        <div className="guess_message">
           Know the whole answer?
-        </span>
+        </div>
         <button
           onClick={this.toggleInputMethod} 
           className="guess_button" 
@@ -139,7 +139,7 @@ class Input extends React.Component {
         <h5>Make your guess</h5>
         <form onSubmit={this.submitGuess}>
           <input className="type_word" ref={node => { this.input = node }} type="text" />
-          <input className="submit_word" type="submit" value="Submit" />
+          <input className="submit_word" type="submit" value="submit" />
         </form>
       </div>
     );
