@@ -7,13 +7,6 @@ class Drawing extends React.Component {
     this.renderCanvas();
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.strikes !== prevProps.strikes) {
-      console.log('componentDidUpdate strikes is', this.props.strikes)
-      // this.renderCanvas();
-    }
-  }
-
   renderCanvas = () => {
     const { strikes } = this.props;
 
@@ -25,7 +18,6 @@ class Drawing extends React.Component {
 
     const ctx = c.getContext("2d");
     ctx.lineWidth = 3;
-    ctx.strokeStyle = '#235577';
 
     if (strikes === 0) {
       //draw hangman stage
@@ -40,11 +32,8 @@ class Drawing extends React.Component {
       ctx.stroke();
 
       ctx.beginPath();
-      ctx.moveTo(188, 260);
-      ctx.lineTo(180, 275);
-      ctx.bezierCurveTo(185, 280, 189, 277, 192, 270);
-      ctx.lineTo(188, 260);
-      ctx.stroke();
+      ctx.arc(188, 265, 5, 0, 2 * Math.PI);
+      ctx.fill();
     }
 
  
