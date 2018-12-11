@@ -6,6 +6,7 @@ const mapStateToProps = state => ({
   guesses: state.guesses,
   gameStatus: state.gameStatus,
   words: state.words,
+  isWordsLoading: state.isWordsLoading,
 })
 
 const mapDispatchToProps = dispatch => ({
