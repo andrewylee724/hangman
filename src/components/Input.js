@@ -80,9 +80,11 @@ class Input extends React.Component {
 
   renderInput = () => {
     const { isGuessingWord } = this.state;
-    const { gameStatus } = this.props;
+    const { gameStatus, isWordsLoading } = this.props;
 
-    if (gameStatus !== 'in progress') {
+    if (isWordsLoading) {
+      return '';
+    } else if (gameStatus !== 'in progress') {
       return this.renderGameOver();
     } else {
       return isGuessingWord

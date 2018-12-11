@@ -14,6 +14,7 @@ Redux - to manage state globally
 Redux-Thunk - to handle asynchronous data fetching within the Redux architecture
 SASS - as a CSS processor and to use variables and mixins.  No component libraries (i.e. Semantic UI, Material UI) were used as I wanted to showcase my ability to harness CSS styling
 CORS Proxy - I utilized a third-party CORS proxy during my api fetches to overcome the "No-CORS" roadblock on the REACH dictionary server.  I assumed that I was not allowed to ask REACH's backend server to allow Cross Origin Requests.
+Semantic HTML - semantic HTML elements were used to provide context and meaning, but some div's were required for positioning purposes
 
 Workflow:
 To show my knowledge of the Git workflow, I had master, develop, and feature branches.  Each branch represented a hypothetical ticket on JIRA.  I would merge individual feature branches onto develop, and then merge develop onto master.
