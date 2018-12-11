@@ -79,7 +79,7 @@ class Display extends React.Component {
     console.log('word is', word, 'guesses is', guesses);
 
     if (gameStatus === 'game lost') {
-      this.renderLettersWhenLost();
+      return this.renderLettersWhenLost();
     } else if(word) {
       return word.split('').map( letter => {
         return guesses.includes(letter) 
@@ -93,7 +93,7 @@ class Display extends React.Component {
 
   renderLettersWhenLost = () => {
     const { word, guesses } = this.props;
-
+    console.log('YOU LOSTTTTTTTT', word, guesses);
     return word.split('').map( letter => {
       return guesses.includes(letter) 
         ? <LetterBlock key={Math.random()} letter={letter}/>
