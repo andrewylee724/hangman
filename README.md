@@ -1,4 +1,6 @@
-Note: To run, please clone or fork this repository.  In the command line in the root directory, run "npm install" and "npm start".
+Note: 
+(1) To run, please clone or fork this repository.  In the command line in the root directory, run "npm install" and "npm start".
+(2) Go to https://andrewylee724.github.io/hangman
 
 Hangman Application
 created by Andrew Lee
@@ -34,3 +36,5 @@ Feature-5: User should be able to guess the whole word at once.
 Feature-6: App should display list of incorrect guesses
 
 Feature-7: App should have a "Game Over" mode and the ability to start a new game
+
+Feature-8: Deploy web application on Github Pages: andrewylee724.github.io/hangman
