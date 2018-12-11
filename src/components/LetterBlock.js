@@ -1,9 +1,10 @@
 import React from 'react';
 import '../styles/LetterBlock.scss';
 
-const LetterBlock = ({letter}) => {
+const LetterBlock = ({letter, faded = false}) => {
+  const letterBlockClass = faded ? "square faded" : "square";
   return(
-    <li className="square">
+    <li className={letterBlockClass}>
         {letter}
     </li>
   )

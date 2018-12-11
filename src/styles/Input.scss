@@ -66,6 +66,7 @@ form {
 
 .submit_word {
   width: 30%;
+  padding: 4px;
   font-family: 'helvetica', 'comic sans ms', 'sans serif';
   background: #334466;
   color: #fff;
@@ -73,6 +74,22 @@ form {
   font-size: 1.1rem;
 
   &:hover {
+    cursor: pointer;
+  }
+}
+
+.start_game {
+  width: 65%;
+  background: #4455aa;
+  color: #fff;
+  margin: 20px;
+  padding: 10px;
+  font-family: 'sans serif', 'helvetica';
+  font-size: 1rem;
+  border-radius: 14px;
+
+  &:hover {
+    background: #5d6aaf;
     cursor: pointer;
   }
 }
