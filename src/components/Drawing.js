@@ -25,6 +25,7 @@ class Drawing extends React.Component {
 
     const ctx = c.getContext("2d");
     ctx.lineWidth = 3;
+    ctx.strokeStyle = '#235577';
 
     if (strikes === 0) {
       //draw hangman stage
@@ -35,9 +36,18 @@ class Drawing extends React.Component {
 
       ctx.beginPath();
       ctx.moveTo(171, 26);
-      ctx.bezierCurveTo(219, 105, 195, 225, 188, 280);
+      ctx.bezierCurveTo(219, 105, 195, 225, 188, 260);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(188, 260);
+      ctx.lineTo(180, 275);
+      ctx.bezierCurveTo(185, 280, 189, 277, 192, 270);
+      ctx.lineTo(188, 260);
       ctx.stroke();
     }
+
+ 
 
     if (strikes === 1) {
       //draw circle face
