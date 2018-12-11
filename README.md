@@ -1,4 +1,6 @@
-Note: To run, please clone or fork this repository.  In the command line in the root directory, run "npm install" and "npm start".
+Note: 
+(1) To run, please clone or fork this repository.  In the command line in the root directory, run "npm install" and "npm start".
+(2) Go to https://andrewylee724.github.io/hangman
 
 Hangman Application
 created by Andrew Lee
