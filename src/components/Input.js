@@ -13,8 +13,8 @@ class Input extends React.Component {
 
   handleKeyDown = (event) => {
     const { guesses, updateGuesses } = this.props;
-    const key = event.key.toUpperCase();
-    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+    const key = event.key.toLowerCase();
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.toLowerCase().split('');
 
     if(!letters.includes(key)) {
       return;
@@ -25,27 +25,9 @@ class Input extends React.Component {
     }
   }
 
-  // submitGuess = (event) => {
-  //   event.preventDefault();
-    
-  //   const { updateGuesses, updateStrikes } = this.props;
-  //   const guess = this.input.value.toUpperCase();
-
-  //   console.log('guess is', guess)
-
-  //   updateGuesses(guess);
-
-  //   // const { guesses } = this.state;
-  //   // const guess = this.input.value;
-
-  //   // this.setState({
-  //   //   guesses: [...guesses, guess],
-  //   // }, this.checkGuess);
-  // }
-
   handleKeyClick = (key) => {
     const { updateGuesses } = this.props;
-    key = key.toUpperCase();
+    key = key.toLowerCase();
     console.log('key is clicked!', key);
 
     updateGuesses(key);
@@ -70,13 +52,13 @@ class Input extends React.Component {
     return (
       <div className="keyboard">
         <div>
-          {convertToKeys('QWERTYUIOP')}
+          {convertToKeys('qwertyuiop')}
         </div>
         <div>
-          {convertToKeys('ASDFGHJKL')}
+          {convertToKeys('asdfghjkl')}
         </div>
         <div>
-          {convertToKeys('ZXCVBNM')}
+          {convertToKeys('zxcvbnm')}
         </div>
       </div>
     );
