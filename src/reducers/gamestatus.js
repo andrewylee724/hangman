@@ -2,6 +2,8 @@
 
 export const gameStatus = (state = 'in progress', action) => {
   switch (action.type) {
+    case 'SET_NEW_GAME':
+      return 'in progress';
     case 'SET_GAME_STATUS':
       return action.payload;
     default:

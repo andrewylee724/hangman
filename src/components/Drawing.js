@@ -17,9 +17,11 @@ class Drawing extends React.Component {
     }
 
     const ctx = c.getContext("2d");
+    ctx.clearRect(0, 0, c.width, c.height);
+
     ctx.lineWidth = 3;
 
-    if (strikes === 0) {
+    if (strikes >= 0) {
       //draw hangman stage
       ctx.beginPath();
       ctx.moveTo(90, 98);
@@ -38,14 +40,14 @@ class Drawing extends React.Component {
 
  
 
-    if (strikes === 1) {
+    if (strikes >= 1) {
       //draw circle face
       ctx.beginPath();
       ctx.arc(97, 123, 26, 0, 2 * Math.PI);
       ctx.stroke();
     }
 
-    if (strikes === 2) {
+    if (strikes >= 2) {
       //draw stick torso
       ctx.beginPath();
       ctx.moveTo(93, 148);
@@ -53,7 +55,7 @@ class Drawing extends React.Component {
       ctx.stroke();
     }
 
-    if (strikes === 3) {
+    if (strikes >= 3) {
       //draw left leg
       ctx.beginPath();
       ctx.moveTo(127.5, 191.25);
@@ -67,7 +69,7 @@ class Drawing extends React.Component {
       ctx.stroke();
     }
 
-    if (strikes === 4) {
+    if (strikes >= 4) {
       //draw left arm
       ctx.beginPath();
       ctx.moveTo(96.75, 168.75);
@@ -75,7 +77,7 @@ class Drawing extends React.Component {
       ctx.stroke();
     }
 
-    if (strikes === 5) {
+    if (strikes >= 5) {
       //draw right arm
       ctx.beginPath();
       ctx.moveTo(96, 168.75);
@@ -83,7 +85,7 @@ class Drawing extends React.Component {
       ctx.stroke();
     }
 
-    if (strikes === 6) {
+    if (strikes >= 6) {
       ctx.lineWidth = 4;
 
       //draw left eye

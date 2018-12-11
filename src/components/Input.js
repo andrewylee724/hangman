@@ -1,5 +1,5 @@
 import React from 'react';
-import { debounce } from 'lodash';
+import _ from 'lodash';
 import '../styles/Input.scss';
 
 class Input extends React.Component {
@@ -15,6 +15,16 @@ class Input extends React.Component {
 
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyDown);
+  }
+
+  startNewGame = () => {
+    const { startNewGame, words } = this.props;
+
+    const randomWord = _.sample(words);
+
+    console.log('new word is', randomWord);
+
+    startNewGame(randomWord);
   }
 
   handleKeyDown = (event) => {
@@ -49,6 +59,10 @@ class Input extends React.Component {
 
     const { updateGuesses } = this.props;
     const guess = this.input.value.toLowerCase();  
+
+    if(guess.trim().length === 0) {
+      return;
+    }
     console.log('your guess is', guess);
 
     this.setState({
@@ -62,6 +76,19 @@ class Input extends React.Component {
     this.setState({
       isGuessingWord: !this.state.isGuessingWord
     });
+  }
+
+  renderInput = () => {
+    const { isGuessingWord } = this.state;
+    const { gameStatus } = this.props;
+
+    if (gameStatus !== 'in progress') {
+      return this.renderGameOver();
+    } else {
+      return isGuessingWord
+      ? this.renderSubmitForm()
+      : this.renderKeyboard()
+    }
   }
 
   renderKeyboard = () => {
@@ -89,7 +116,7 @@ class Input extends React.Component {
           onClick={this.toggleInputMethod} 
           className="guess_button" 
           type="click">
-          Click Here to Guess
+          Make a Guess
         </button>
         <div className="keyboard">
           <div>
@@ -118,12 +145,28 @@ class Input extends React.Component {
     );
   }
 
+  renderGameOver = () => {
+    const { startNewGame } = this.props;
+
+    return (
+      <button 
+        className="start_game" 
+        type="click"
+        onClick={this.startNewGame}>
+        Start New Game
+      </button>
+    )
+  }
+
   render() {
+    const { isGuessingWord } = this.state;
+    const { gameStatus } = this.props;
+
     return (
       <section>
-        {this.state.isGuessingWord
-        ? this.renderSubmitForm()
-        : this.renderKeyboard()}
+        {
+          this.renderInput()
+        }
       </section>
     );
   }

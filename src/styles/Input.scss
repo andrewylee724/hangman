@@ -76,3 +76,19 @@ form {
     cursor: pointer;
   }
 }
+
+.start_game {
+  width: 65%;
+  background: #4455aa;
+  color: #fff;
+  margin: 20px;
+  padding: 10px;
+  font-family: 'sans serif', 'helvetica';
+  font-size: 1rem;
+  border-radius: 14px;
+
+  &:hover {
+    background: #5d6aaf;
+    cursor: pointer;
+  }
+}
