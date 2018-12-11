@@ -1,17 +1,31 @@
 import React from 'react';
 import LetterBlock from './LetterBlock';
 import Drawing from './Drawing';
+import { getRandomWord } from '../helper';
 import '../styles/Display.scss';
 
 class Display extends React.Component {
 
+  componentDidMount() {
+    const { fetchFromAPI } = this.props;
+    fetchFromAPI();
+  }
+
   componentDidUpdate(prevProps) {
-    if(prevProps.guesses !== this.props.guesses) {
+    const { guesses, strikes, words, setRandomWord } = this.props;
+
+    if(prevProps.guesses !== guesses) {
       this.checkGuess();
     }
 
-    if(prevProps.strikes != this.props.strikes) {
+    if(prevProps.strikes !== strikes) {
       this.checkGameOver();
+    }
+
+    if(prevProps.words !== words) {
+      let randomWord = getRandomWord(words);
+      console.log('sampled word is', randomWord);
+      setRandomWord(randomWord);
     }
   }
 
@@ -85,7 +99,7 @@ class Display extends React.Component {
   }
 
   render() {
-    const { strikes } = this.props;
+    const { strikes, isWordsLoading } = this.props;
     const MAX_STRIKES = 6;
 
     return (
@@ -104,7 +118,9 @@ class Display extends React.Component {
           {this.renderGuesses()}
         </ul>
         <ul id='words_letters'>
-          {this.renderLetters()}
+          {isWordsLoading
+            ? 'Loading Word...'
+            : this.renderLetters()}
         </ul>
       </section>
     );
