@@ -34,3 +34,5 @@ Feature-5: User should be able to guess the whole word at once.
 Feature-6: App should display list of incorrect guesses
 
 Feature-7: App should have a "Game Over" mode and the ability to start a new game
+
+Feature-8: Deploy web application on Github Pages: andrewylee724.github.io/hangman
