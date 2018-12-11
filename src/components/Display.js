@@ -34,7 +34,9 @@ class Display extends React.Component {
     const guess = guesses[guesses.length - 1];
 
     console.log('guess is', guess);
-    if (word.includes(guess)) {
+    if (word === guess) {
+      console.log('you guess the whole word right!');
+    } else if (word.includes(guess)) {
       console.log('you guessed right!');
       this.checkGameOver();
     } else {
