@@ -4,8 +4,14 @@ import '../styles/Input.scss';
 
 class Input extends React.Component {
 
-  MAX_STRIKES = 6;
-  input = React.createRef();
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isGuessingWord: false,
+    }
+
+  }
 
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyDown);
@@ -13,8 +19,13 @@ class Input extends React.Component {
 
   handleKeyDown = (event) => {
     const { guesses, updateGuesses } = this.props;
+    const { isGuessingWord } = this.state;
     const key = event.key.toLowerCase();
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.toLowerCase().split('');
+
+    if(isGuessingWord) {
+      return;
+    }
 
     if(!letters.includes(key)) {
       return;
@@ -31,6 +42,26 @@ class Input extends React.Component {
     console.log('key is clicked!', key);
 
     updateGuesses(key);
+  }
+
+  submitGuess = (event) => {
+    event.preventDefault();
+
+    const { updateGuesses } = this.props;
+    const guess = this.input.value.toLowerCase();  
+    console.log('your guess is', guess);
+
+    this.setState({
+      isGuessingWord: false,
+    });
+
+    updateGuesses(guess);
+  }
+
+  toggleInputMethod = () => {
+    this.setState({
+      isGuessingWord: !this.state.isGuessingWord
+    });
   }
 
   renderKeyboard = () => {
@@ -50,16 +81,39 @@ class Input extends React.Component {
     };
 
     return (
-      <div className="keyboard">
-        <div>
-          {convertToKeys('qwertyuiop')}
+      <section>
+        <span className="guess_message">
+          Know the whole answer?
+        </span>
+        <button
+          onClick={this.toggleInputMethod} 
+          className="guess_button" 
+          type="click">
+          Click Here to Guess
+        </button>
+        <div className="keyboard">
+          <div>
+            {convertToKeys('qwertyuiop')}
+          </div>
+          <div>
+            {convertToKeys('asdfghjkl')}
+          </div>
+          <div>
+            {convertToKeys('zxcvbnm')}
+          </div>
         </div>
-        <div>
-          {convertToKeys('asdfghjkl')}
-        </div>
-        <div>
-          {convertToKeys('zxcvbnm')}
-        </div>
+      </section>
+    );
+  }
+
+  renderSubmitForm = () => {
+    return (
+      <div>
+        <h5>Make your guess</h5>
+        <form onSubmit={this.submitGuess}>
+          <input className="type_word" ref={node => { this.input = node }} type="text" />
+          <input className="submit_word" type="submit" value="Submit" />
+        </form>
       </div>
     );
   }
@@ -67,12 +121,9 @@ class Input extends React.Component {
   render() {
     return (
       <section>
-        {/* <form onSubmit={this.submitGuess}>
-          <input className="interactions" ref={node => { this.input = node }} type="text" />
-          <input className="interactions" type="submit" value="Submit" />
-        </form> */}
-
-        {this.renderKeyboard()}
+        {this.state.isGuessingWord
+        ? this.renderSubmitForm()
+        : this.renderKeyboard()}
       </section>
     );
   }
