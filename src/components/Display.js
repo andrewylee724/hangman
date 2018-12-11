@@ -30,12 +30,13 @@ class Display extends React.Component {
   }
 
   checkGuess = () => {
-    const { word, guesses, updateStrikes } = this.props;
+    const { word, guesses, updateStrikes, setGameStatus } = this.props;
     const guess = guesses[guesses.length - 1];
 
     console.log('guess is', guess);
     if (word === guess) {
-      console.log('you guess the whole word right!');
+      console.log('you guessed the whole word right!');
+      setGameStatus('game won');
     } else if (word.includes(guess)) {
       console.log('you guessed right!');
       this.checkGameOver();
@@ -46,12 +47,16 @@ class Display extends React.Component {
   }
 
   checkGameOver = () => {
+    const { setGameStatus } = this.props;
+
     if (this.isGameWon()) {
       console.log('game is won!');
+      setGameStatus('game won');
     }
 
     if (this.isGameLost()) {
       console.log('game is lost!');
+      setGameStatus('game lost');
     }
   }
 
@@ -70,10 +75,12 @@ class Display extends React.Component {
   }
 
   renderLetters = () => {
-    const { word, guesses } = this.props;
+    const { word, guesses, gameStatus } = this.props;
     console.log('word is', word, 'guesses is', guesses);
 
-    if(word) {
+    if (gameStatus === 'game lost') {
+      return this.renderLettersWhenLost();
+    } else if(word) {
       return word.split('').map( letter => {
         return guesses.includes(letter) 
           ? <LetterBlock key={Math.random()} letter={letter}/>
@@ -84,33 +91,33 @@ class Display extends React.Component {
     }
   }
 
-  renderGuesses = () => {
-    const { guesses } = this.props;
-
-    if(guesses.length > 0) {
-      return guesses.map( guess => {
-        return (
-          <li>
-            {guess}
-          </li>
-        );
-      })
-    } else {
-      return ' no guesses yet';
-    }
+  renderLettersWhenLost = () => {
+    const { word, guesses } = this.props;
+    console.log('YOU LOSTTTTTTTT', word, guesses);
+    return word.split('').map( letter => {
+      return guesses.includes(letter) 
+        ? <LetterBlock key={Math.random()} letter={letter}/>
+        : <LetterBlock key={Math.random()} faded="true" letter={letter}/>
+    })
   }
 
   render() {
-    const { strikes, isWordsLoading } = this.props;
+    const { strikes, isWordsLoading, gameStatus } = this.props;
     const MAX_STRIKES = 6;
+
+    const message ={
+      'in progress': 'Hangman',
+      'game won': 'You Won!',
+      'game lost': 'You Lost!'
+    };
 
     return (
       <section>
         <header>
-          Hangman
+          {message[gameStatus]}
         </header>
         <div>
-          Guesses Left:&nbsp;{MAX_STRIKES - strikes}
+          Strikes Left:&nbsp;{MAX_STRIKES - strikes}
         </div>
         <Drawing
           strikes={strikes}

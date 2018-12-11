@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Display from '../components/Display';
-import { addStrike, fetchFromAPI, setWord } from '../actions';
+import { addStrike, fetchFromAPI, setWord, setGameStatus } from '../actions';
 
 const mapStateToProps = state => ({
   word: state.word,
@@ -8,6 +8,7 @@ const mapStateToProps = state => ({
   isWordsLoading: state.isWordsLoading,
   guesses: state.guesses,
   strikes: state.strikes,
+  gameStatus: state.gameStatus,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -20,6 +21,9 @@ const mapDispatchToProps = dispatch => ({
   setRandomWord: (word) => {
     dispatch(setWord(word));
   },
+  setGameStatus: (status) => {
+    dispatch(setGameStatus(status));
+  }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Display);

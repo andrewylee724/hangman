@@ -4,6 +4,7 @@ import { words } from './words';
 import { isWordsLoading } from './iswordsloading';
 import { guesses } from './guesses';
 import { strikes } from './strikes';
+import { gameStatus } from './gamestatus';
 
 const rootReducer = combineReducers({
   word,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   isWordsLoading,
   guesses,
   strikes,
+  gameStatus,
 });
 
 export default rootReducer;
